@@ -27,7 +27,6 @@
 	font-size: 1.5rem /* 24px */;
 	font-weight: 600;
 	line-height: 2rem /* 32px */;
-	margin-bottom: 50px;
 
 	color: var(--text-black);
 }
@@ -41,8 +40,7 @@
 	border-radius: 25px;
 	cursor: pointer;
 	color: white;
-	outline: 0;
-	border: 0px;
+	border: transparent;
 
 	padding-top: 1rem /* 16px */;
 	padding-bottom: 1rem /* 16px */;
@@ -56,6 +54,7 @@
 	background-color: #eae5e4;
 	border: 1px solid var(--text-orange);
 	color: var(--text-orange);
+	margin: -1px;
 }
 
 /** 

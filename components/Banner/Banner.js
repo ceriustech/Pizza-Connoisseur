@@ -8,13 +8,15 @@ const Banner = (props) => {
 			<h1 className={styles.title}>
 				P<span className={styles.title_left}>izz</span>a{' '}
 				<span className={styles.title_right}>
-					Conno<span>is</span>seur
+					P<span>i</span>cker
 				</span>
 			</h1>
 			<p className={styles.subTitle}>Rate your local pizza shops!</p>
-			<button className={styles.button} onClick={handleOnClick}>
-				{buttonText}
-			</button>
+			<div className={styles.buttonWrapper}>
+				<button className={styles.button} onClick={handleOnClick}>
+					{buttonText}
+				</button>
+			</div>
 		</div>
 	);
 };
