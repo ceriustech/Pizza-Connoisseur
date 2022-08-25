@@ -19,7 +19,7 @@ class MyDocument extends Document {
 					<meta http-equiv="x-ua-compatible" content="IE=edg, chrome=1" />
 					<meta
 						name="keywords"
-						content="pizza, picker, pizza picker, restaurant, pizza restaurant, , masters, portfolio, web design company, web development company, software development company, software, software development company"
+						content="pizza, picker, pizza picker, restaurant, pizza restaurant, favorite pizza restaurant, pick pizza, pick restaurant, pick pizza restaurant, pick favorite pizza restaurant, best pizza restaurants, best pizza places, top pizza restaurants"
 					/>
 					<meta property="og:url" content="https://pizzapicker.app/" />
 					<meta property="og:title" content="Pizza Picker" />
