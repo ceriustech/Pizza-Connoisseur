@@ -8,16 +8,19 @@ const Card = ({ href, name, imgUrl }) => {
 		<Link href={href}>
 			<a className={styles.cardLink}>
 				<div className={cls('card', styles.container)}>
-					<div className={styles.cardHeaderContainer}>
-						<h2 className={styles.cardHeader}>{name}</h2>
-					</div>
 					<div className={styles.cardImageContainer}>
 						<Image
 							className={styles.cardImage}
+							alt={name}
 							src={imgUrl}
+							layout="responsive"
+							objectFit="cover"
 							width={260}
 							height={160}
 						/>
+					</div>
+					<div className={styles.cardHeaderContainer}>
+						<h2 className={styles.cardHeader}>{name}</h2>
 					</div>
 				</div>
 			</a>
