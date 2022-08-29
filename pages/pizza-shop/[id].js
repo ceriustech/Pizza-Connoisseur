@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import Link from 'next/link';
 import pizzaShopsData from '../../data/pizza-shops.json';
 
@@ -14,13 +15,15 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
+	const paths = pizzaShopsData.map((pizzaShop) => ({
+		params: {
+			id: pizzaShop.id.toString(),
+		},
+	}));
+
 	return {
-		paths: [
-			{ params: { id: '0' } },
-			{ params: { id: '1' } },
-			{ params: { id: '2' } },
-		],
-		fallback: false, // can also be true or 'blocking'
+		paths: paths,
+		fallback: true, // can also be true or 'blocking'
 	};
 }
 
@@ -29,8 +32,17 @@ const PizzaShop = ({ pizzaShop }) => {
 	console.log('%cPROP DATA:', 'font-size: 1.5em;color:red');
 	console.log(pizzaShop);
 
+	if (router.isFallback) {
+		return <div>Loading...</div>;
+	}
+
+	const { name, address, neighborhood } = pizzaShop;
+
 	return (
 		<div>
+			<Head>
+				<title>{name}</title>
+			</Head>
 			<Link href="/">
 				<a>Back To Home</a>
 			</Link>
@@ -40,8 +52,9 @@ const PizzaShop = ({ pizzaShop }) => {
 			<Link href="/pizza-shop/2">
 				<a>Go To Page dynamic</a>
 			</Link>
-			<p>{pizzaShop.name}</p>
-			<p>{pizzaShop.address}</p>
+			<p>{name}</p>
+			<p>{address}</p>
+			<p>{neighborhood}</p>
 		</div>
 	);
 };
