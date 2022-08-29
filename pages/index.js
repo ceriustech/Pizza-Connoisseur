@@ -5,19 +5,15 @@ import styles from '../styles/Home.module.css';
 import Card from '../components/Card/card';
 import pizzaShopsData from '../data/pizza-shops.json';
 
-export async function getStaticProps(context) {
-	console.log('GET STATIC PROPS');
-	console.log(pizzaShopsData);
+export async function getStaticProps() {
 	return {
 		props: {
-			pizzaShopsData,
+			pizzaShops: pizzaShopsData,
 		}, // will be passed to the page component as props
 	};
 }
 
-const Home = ({ pizzaShopsData }) => {
-	console.log('%cPROP DATA:', 'font-size:1.25em; color:red');
-	console.log(pizzaShopsData);
+const Home = ({ pizzaShops }) => {
 	const bannerBtnClickHandler = () => {
 		console.log('BUTTON CLICKED');
 	};
@@ -64,12 +60,12 @@ const Home = ({ pizzaShopsData }) => {
 								<h2 className={styles.heading2}>Milwaukee Pizza Shops</h2>
 							</div>
 							<div className={styles.cardLayout}>
-								{pizzaShopsData.map((store) => (
+								{pizzaShops.map((shop) => (
 									<Card
-										key={store.id}
-										name={store.name}
-										href={`/pizza-shop/${store.id}`}
-										imgUrl={store.imgUrl}
+										key={shop.id}
+										name={shop.name}
+										href={`/pizza-shop/${shop.id}`}
+										imgUrl={shop.imgUrl}
 									/>
 								))}
 							</div>
