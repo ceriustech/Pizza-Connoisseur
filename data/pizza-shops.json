@@ -6,7 +6,7 @@
 		"websiteUrl": "https://www.transfermke.com/",
 		"city": "Milwaukee",
 		"state": "WI",
-		"address": "101 W Mitchell St Milwaukee, WI",
+		"address": "101 W Mitchell St",
 		"neighborhood": "1st and Mitchell"
 	},
 	{
@@ -16,7 +16,7 @@
 		"websiteUrl": "https://www.zaffirospizza.com/",
 		"city": "Milwaukee",
 		"state": "WI",
-		"address": "1724 N Farwell Ave, Milwaukee, WI",
+		"address": "1724 N Farwell Ave",
 		"neighborhood": "Downtown on Farwell"
 	},
 	{
@@ -26,7 +26,7 @@
 		"websiteUrl": "https://fixturepizza.com/",
 		"city": "Milwaukee",
 		"state": "WI",
-		"address": "623 S 2nd St, Milwaukee, WI",
+		"address": "623 S 2nd St",
 		"neighborhood": "South Side"
 	},
 	{
@@ -36,7 +36,7 @@
 		"websiteUrl": "http://classicslice.com/",
 		"city": "Milwaukee",
 		"state": "WI",
-		"address": "2797 S Kinnickinnic Ave, Milwaukee, WI",
+		"address": "2797 S Kinnickinnic Ave",
 		"neighborhood": "South Side"
 	}
 ]

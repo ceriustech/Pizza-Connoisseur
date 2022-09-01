@@ -35,7 +35,7 @@ const PizzaShop = ({ pizzaShop }) => {
 		return <div>Loading...</div>;
 	}
 
-	const { name, address, neighborhood, imgUrl } = pizzaShop;
+	const { name, address, neighborhood, imgUrl, city, state } = pizzaShop;
 
 	return (
 		<div style={styles.layout}>
@@ -43,27 +43,41 @@ const PizzaShop = ({ pizzaShop }) => {
 				<title>{name}</title>
 			</Head>
 
-			<section>
-				<div className={styles.col1}>
-					<Link href="/">
-						<a>Back To Home</a>
-					</Link>
-					<div className={styles.pizzaShopNameContainer}>
-						<h2 style={styles.name}>{name}</h2>
+			<section className={styles.pizzaPlaceContainer}>
+				<Link href="/">
+					<a className={styles.backToHomeLink}>Back to home</a>
+				</Link>
+				<main className={styles.pizzaPlaceInfoContainer}>
+					<div className={styles.col1}>
+						<div className={styles.imageContainer}>
+							<Image
+								src={imgUrl}
+								width={600}
+								height={360}
+								objectFit="cover"
+								className={styles.shopImg}
+								alt={name}
+							/>
+						</div>
 					</div>
+					<div className={styles.col2}>
+						<h2 className={styles.name}>{name}</h2>
+						<p className={styles.pizzaPlaceInfo}>
+							<span>icon</span> {address}
+						</p>
+						<p className={styles.pizzaPlaceInfo}>
+							<span>icon</span> {city}, {state}
+						</p>
+						<p className={styles.pizzaPlaceInfo}>
+							<span>icon</span> {neighborhood}
+						</p>
+						<p className={styles.pizzaPlaceInfo}>
+							<span>icon</span> count
+						</p>
 
-					<Image
-						src={imgUrl}
-						width={600}
-						height={300}
-						className={styles.shopImg}
-						alt={name}
-					/>
-				</div>
-				<div className={styles.col2}>
-					<p>{address}</p>
-					<p>{neighborhood}</p>
-				</div>
+						<button className={styles.upvoteButton}>Up vote!</button>
+					</div>
+				</main>
 			</section>
 		</div>
 	);
