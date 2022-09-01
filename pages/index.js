@@ -43,22 +43,27 @@ const Home = ({ pizzaShops }) => {
 				<link rel="icon" href="/static/favicon.ico" />
 			</Head>
 			<main className={styles.main}>
-				<section>
-					<Banner
-						buttonText="View restaurants nearby"
-						handleOnClick={bannerBtnClickHandler}
-					/>
-					<div className={styles.heroImage}>
-						<Image src="/static/pizza-hero-img.jpeg" width={800} height={550} />
-					</div>
+				<section className={styles.heroContainer}>
+					<Banner />
 				</section>
 
 				<section>
 					{pizzaShopsData.length > 0 && (
 						<>
-							<div>
-								<h2 className={styles.heading2}>Milwaukee Pizza Shops</h2>
+							<div className={styles.headingContainer}>
+								<h2 className={styles.heading}>
+									<span>Top</span> Rated Pizza Shops
+								</h2>
 							</div>
+							<div className={styles.buttonWrapper}>
+								<button
+									className={styles.button}
+									onClick={bannerBtnClickHandler}
+								>
+									View restaurants nearby
+								</button>
+							</div>
+
 							<div className={styles.cardLayout}>
 								{pizzaShops.map((shop) => (
 									<Card
@@ -66,6 +71,8 @@ const Home = ({ pizzaShops }) => {
 										name={shop.name}
 										href={`/pizza-shop/${shop.id}`}
 										imgUrl={shop.imgUrl}
+										city={shop.city}
+										state={shop.state}
 									/>
 								))}
 							</div>

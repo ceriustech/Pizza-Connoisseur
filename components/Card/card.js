@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from './card.module.css';
 import cls from 'classnames';
 
-const Card = ({ href, name, imgUrl }) => {
+const Card = ({ href, name, imgUrl, city, state }) => {
 	return (
 		<Link href={href}>
 			<a className={styles.cardLink}>
@@ -13,14 +13,16 @@ const Card = ({ href, name, imgUrl }) => {
 							className={styles.cardImage}
 							alt={name}
 							src={imgUrl}
-							layout="responsive"
 							objectFit="cover"
-							width={260}
-							height={160}
+							width={200}
+							height={200}
 						/>
 					</div>
-					<div className={styles.cardHeaderContainer}>
+					<div className={styles.cardTextContainer}>
 						<h2 className={styles.cardHeader}>{name}</h2>
+						<p className={styles.cardSubtext}>
+							{city}, {state}
+						</p>
 					</div>
 				</div>
 			</a>

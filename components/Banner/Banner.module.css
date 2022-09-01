@@ -1,60 +1,20 @@
 /** By default, this is a mobile breakpoint **/
 .container {
 	margin-bottom: 6rem;
+	padding: 2.5rem;
 	position: relative;
-	z-index: 2;
-}
-
-.title {
-	letter-spacing: 0.025em;
-	font-weight: 800;
-	color: var(--text-black);
-
-	font-size: 3rem /* 48px */;
-	line-height: 1;
-}
-
-.title_left {
-	color: var(--text-orange);
-}
-
-.title_right span {
-	color: var(--text-orange);
+	height: 100%;
 }
 
 .subTitle {
 	margin-top: 0.75rem;
-	font-size: 1.5rem /* 24px */;
-	font-weight: 600;
-	line-height: 2rem /* 32px */;
-
-	color: var(--text-black);
+	font-size: 3.5rem /* 24px */;
+	font-weight: 800;
+	color: #eae5e4;
 }
 
-.buttonWrapper {
-	margin-top: 1.25rem;
-}
-
-.button {
-	background-color: var(--text-orange);
-	border-radius: 25px;
-	cursor: pointer;
-	color: white;
-	border: transparent;
-
-	padding-top: 1rem /* 16px */;
-	padding-bottom: 1rem /* 16px */;
-	font-size: 1.125rem /* 18px */;
-	line-height: 1.75rem /* 28px */;
-	padding-left: 2.5rem /* 40px */;
-	padding-right: 2.5rem /* 40px */;
-}
-
-.button:hover {
-	background-color: #eae5e4;
-	border: 1px solid var(--text-orange);
+.subTitle span {
 	color: var(--text-orange);
-	margin: -1px;
 }
 
 /** 
@@ -76,12 +36,7 @@
 
 	.subTitle {
 		margin-top: 1.25rem;
-		max-width: 36rem;
-	}
-
-	.buttonWrapper {
-		display: flex;
-		margin-top: 2rem;
+		max-width: 34rem;
 	}
 }
 
@@ -93,16 +48,7 @@
 	}
 
 	.subTitle {
-		margin-top: 1.25rem;
-	}
-
-	.button {
-		padding-top: 1rem /* 16px */;
-		padding-bottom: 1rem /* 16px */;
-		font-size: 1.125rem /* 18px */;
-		line-height: 1.75rem /* 28px */;
-		padding-left: 2.5rem /* 40px */;
-		padding-right: 2.5rem /* 40px */;
+		margin-top: 4.25rem;
 	}
 }
 
@@ -124,10 +70,6 @@
 	.subTitle {
 		margin-left: 0px;
 		margin-right: 0px;
-	}
-
-	.buttonWrapper {
-		justify-content: flex-start;
 	}
 }
 

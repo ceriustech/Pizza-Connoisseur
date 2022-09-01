@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import pizzaShopsData from '../../data/pizza-shops.json';
+import styles from '../../styles/PizzaShop.module.css';
 
 export async function getStaticProps({ params }) {
-	console.log('PARAMS', params);
 	return {
 		props: {
 			pizzaShop: pizzaShopsData.find(
@@ -29,32 +30,41 @@ export async function getStaticPaths() {
 
 const PizzaShop = ({ pizzaShop }) => {
 	const router = useRouter();
-	console.log('%cPROP DATA:', 'font-size: 1.5em;color:red');
-	console.log(pizzaShop);
 
 	if (router.isFallback) {
 		return <div>Loading...</div>;
 	}
 
-	const { name, address, neighborhood } = pizzaShop;
+	const { name, address, neighborhood, imgUrl } = pizzaShop;
 
 	return (
-		<div>
+		<div style={styles.layout}>
 			<Head>
 				<title>{name}</title>
 			</Head>
-			<Link href="/">
-				<a>Back To Home</a>
-			</Link>
 
-			<h2>Pizza Shop Page {router.query.id}</h2>
+			<section>
+				<div className={styles.col1}>
+					<Link href="/">
+						<a>Back To Home</a>
+					</Link>
+					<div className={styles.pizzaShopNameContainer}>
+						<h2 style={styles.name}>{name}</h2>
+					</div>
 
-			<Link href="/pizza-shop/2">
-				<a>Go To Page dynamic</a>
-			</Link>
-			<p>{name}</p>
-			<p>{address}</p>
-			<p>{neighborhood}</p>
+					<Image
+						src={imgUrl}
+						width={600}
+						height={300}
+						className={styles.shopImg}
+						alt={name}
+					/>
+				</div>
+				<div className={styles.col2}>
+					<p>{address}</p>
+					<p>{neighborhood}</p>
+				</div>
+			</section>
 		</div>
 	);
 };

@@ -4,6 +4,8 @@
 		"name": "Transfer Pizzeria Cafe",
 		"imgUrl": "https://images.unsplash.com/photo-1559183533-ee5f4826d3db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2027&q=80",
 		"websiteUrl": "https://www.transfermke.com/",
+		"city": "Milwaukee",
+		"state": "WI",
 		"address": "101 W Mitchell St Milwaukee, WI",
 		"neighborhood": "1st and Mitchell"
 	},
@@ -12,15 +14,29 @@
 		"name": "Zaffiro's",
 		"imgUrl": "https://images.unsplash.com/photo-1600628421055-4d30de868b8f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
 		"websiteUrl": "https://www.zaffirospizza.com/",
-		"address": "1724 N Farwell Ave, Milwaukee, WI 53202-1806",
+		"city": "Milwaukee",
+		"state": "WI",
+		"address": "1724 N Farwell Ave, Milwaukee, WI",
 		"neighborhood": "Downtown on Farwell"
 	},
 	{
 		"id": 2,
 		"name": "Fixture Pizza Pub",
-		"imgUrl": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+		"imgUrl": "https://images.unsplash.com/photo-1560202212-441ad59100fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80",
 		"websiteUrl": "https://fixturepizza.com/",
-		"address": "623 S 2nd St, Milwaukee, WI 53204-1616",
+		"city": "Milwaukee",
+		"state": "WI",
+		"address": "623 S 2nd St, Milwaukee, WI",
+		"neighborhood": "South Side"
+	},
+	{
+		"id": 3,
+		"name": "Classic Slice",
+		"imgUrl": "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDR8fHBpenphJTIwcmVzdGF1cmFudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+		"websiteUrl": "http://classicslice.com/",
+		"city": "Milwaukee",
+		"state": "WI",
+		"address": "2797 S Kinnickinnic Ave, Milwaukee, WI",
 		"neighborhood": "South Side"
 	}
 ]
