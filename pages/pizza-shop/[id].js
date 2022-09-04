@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { icons } from '../../data/Icons';
 import pizzaShopsData from '../../data/pizza-shops.json';
 import styles from '../../styles/PizzaShop.module.css';
+import cls from 'classnames';
 
 export async function getStaticProps({ params }) {
 	// const icon = icons;
@@ -47,11 +48,11 @@ const PizzaShop = ({ pizzaShop, icon }) => {
 				<title>{name}</title>
 			</Head>
 
-			<section className={styles.pizzaPlaceContainer}>
+			<main id="restaurantPage" className={styles.pizzaPlaceContainer}>
 				<Link href="/">
 					<a className={styles.backToHomeLink}>Back to home</a>
 				</Link>
-				<main className={styles.pizzaPlaceInfoContainer}>
+				<section className={styles.pizzaPlaceInfoContainer}>
 					<div className={styles.col1}>
 						<div className={styles.imageContainer}>
 							<Image
@@ -67,8 +68,7 @@ const PizzaShop = ({ pizzaShop, icon }) => {
 					<div className={styles.col2}>
 						<h2 className={styles.name}>{name}</h2>
 						<p className={styles.pizzaPlaceInfo}>
-							<span>
-								{' '}
+							<span className={styles.icon}>
 								<Image
 									src={map}
 									width={24}
@@ -77,12 +77,11 @@ const PizzaShop = ({ pizzaShop, icon }) => {
 									className={styles.iconImg}
 									alt={name}
 								/>
-							</span>{' '}
+							</span>
 							{address}
 						</p>
 						<p className={styles.pizzaPlaceInfo}>
-							<span>
-								{' '}
+							<span className={styles.icon}>
 								<Image
 									src={cityState}
 									width={24}
@@ -91,12 +90,11 @@ const PizzaShop = ({ pizzaShop, icon }) => {
 									className={styles.iconImg}
 									alt={name}
 								/>
-							</span>{' '}
+							</span>
 							{city}, {state}
 						</p>
 						<p className={styles.pizzaPlaceInfo}>
-							<span>
-								{' '}
+							<span className={styles.icon}>
 								<Image
 									src={restaurant}
 									width={24}
@@ -105,12 +103,11 @@ const PizzaShop = ({ pizzaShop, icon }) => {
 									className={styles.iconImg}
 									alt={name}
 								/>
-							</span>{' '}
+							</span>
 							{neighborhood}
 						</p>
 						<p className={styles.pizzaPlaceInfo}>
-							<span>
-								{' '}
+							<span className={styles.icon}>
 								<Image
 									src={thumbUp}
 									width={24}
@@ -119,14 +116,14 @@ const PizzaShop = ({ pizzaShop, icon }) => {
 									className={styles.iconImg}
 									alt={name}
 								/>
-							</span>{' '}
+							</span>
 							count
 						</p>
 
 						<button className={styles.upvoteButton}>Up Vote!</button>
 					</div>
-				</main>
-			</section>
+				</section>
+			</main>
 		</div>
 	);
 };

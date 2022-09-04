@@ -78,9 +78,8 @@
 }
 
 .button:hover {
-	background-color: #eae5e4;
+	background-color: #f44954;
 	border: 1px solid var(--text-orange);
-	color: var(--text-orange);
 	margin: -1px;
 }
 

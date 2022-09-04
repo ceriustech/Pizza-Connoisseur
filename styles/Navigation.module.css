@@ -58,3 +58,13 @@
 .navItem:hover {
 	color: var(--text-orange);
 }
+
+@media (max-width: 425px) {
+	.title {
+		font-size: 1.25em;
+	}
+
+	.navItem {
+		margin: 0 0.5rem;
+	}
+}

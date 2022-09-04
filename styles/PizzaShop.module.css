@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-	padding: 5rem 0;
+	padding: 13rem 0 5rem;
 	max-width: 1200px;
 	width: 90vw;
 }
@@ -33,7 +33,20 @@
 	margin-top: 2rem;
 }
 
+.col1 {
+	height: 100%;
+}
+
+.imageContainer {
+	height: 100%;
+}
+
+.imageContainer span {
+	height: 100% !important;
+}
+
 .imageContainer img {
+	height: 100%;
 	width: 100%;
 	display: block;
 	border-radius: 0.5rem;
@@ -41,6 +54,11 @@
 
 .col2 {
 	align-self: self-start;
+	color: rgba(55, 59, 100, 1);
+	border-radius: 10px;
+	border: 1px solid #d53200;
+	padding: 1rem 1rem 0.5rem;
+	height: 100%;
 }
 
 .name {
@@ -58,8 +76,13 @@
 	text-transform: capitalize;
 	width: 320px;
 	display: grid;
-	grid-template-columns: 50px 1fr;
+	grid-template-columns: 24px 1fr;
 	grid-gap: 20px;
+}
+
+.icon {
+	filter: invert(61%) sepia(2%) saturate(1509%) hue-rotate(314deg)
+		brightness(93%) contrast(78%);
 }
 
 .upvoteButton {
@@ -76,9 +99,47 @@
 	font-size: 1rem;
 }
 
+.upvoteButton:hover {
+	background-color: #f44954;
+}
+
 @media (max-width: 768px) {
 	.pizzaPlaceInfoContainer {
 		gap: 2rem;
 		grid-template-columns: unset;
+	}
+
+	.imageContainer span {
+		width: 100% !important;
+	}
+}
+
+@media (max-width: 425px) {
+	.pizzaPlaceContainer {
+		padding-top: 8rem;
+	}
+	.name {
+		font-size: 1.75rem;
+		width: 20rem;
+	}
+}
+
+@media (max-width: 375px) {
+	.col1 {
+		width: 90vw;
+	}
+
+	.col2 {
+		width: 90vw;
+	}
+
+	.name {
+		font-size: 1.5rem;
+	}
+}
+
+@media (max-width: 320px) {
+	.pizzaPlaceInfo {
+		font-size: 1.25rem;
 	}
 }
