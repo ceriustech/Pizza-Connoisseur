@@ -8,12 +8,18 @@
 
 .subTitle {
 	margin-top: 0.75rem;
-	font-size: 3.5rem /* 24px */;
-	font-weight: 800;
+	font-size: 3.75rem /* 24px */;
+	font-weight: 600;
 	color: #eae5e4;
 }
 
-.subTitle span {
+.subTitle_h2 {
+	font-size: 3.75rem /* 24px */;
+	font-weight: 600;
+	color: #eae5e4;
+}
+
+.subTitle_h2 span {
 	color: var(--text-orange);
 }
 
@@ -34,9 +40,10 @@
 		line-height: 1;
 	}
 
-	.subTitle {
+	.subTitle,
+	.subTitle_h2 {
 		margin-top: 1.25rem;
-		max-width: 34rem;
+		max-width: 32rem;
 	}
 }
 
@@ -67,7 +74,8 @@
 		padding-left: 0.5rem;
 	}
 
-	.subTitle {
+	.subTitle,
+	.subTitle_h2 {
 		margin-left: 0px;
 		margin-right: 0px;
 	}

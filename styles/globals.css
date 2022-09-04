@@ -55,9 +55,9 @@ button:focus {
 .card {
 	/* Created with https://www.css-gradient.com */
 	background: #b3b3b3;
-	background: -webkit-linear-gradient(top left, #bfbfbf, #eae5e4);
-	background: -moz-linear-gradient(top left, #bfbfbf, #eae5e4);
-	background: linear-gradient(to bottom right, #bfbfbf, #eae5e4);
+	background: -webkit-linear-gradient(top left, #bfbfbf, #fff);
+	background: -moz-linear-gradient(top left, #bfbfbf, #fff);
+	background: linear-gradient(to bottom right, #bfbfbf, #fff);
 	transition: all 0.4s ease-in-out;
 }
 

@@ -75,7 +75,7 @@ const PizzaShop = ({ pizzaShop }) => {
 							<span>icon</span> count
 						</p>
 
-						<button className={styles.upvoteButton}>Up vote!</button>
+						<button className={styles.upvoteButton}>Up Vote!</button>
 					</div>
 				</main>
 			</section>

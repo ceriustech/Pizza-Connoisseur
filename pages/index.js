@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Banner from '../components/Banner/Banner';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Card from '../components/Card/card';
 import pizzaShopsData from '../data/pizza-shops.json';
