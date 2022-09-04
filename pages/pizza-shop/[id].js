@@ -2,12 +2,15 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { icons } from '../../public/Icons';
 import pizzaShopsData from '../../data/pizza-shops.json';
 import styles from '../../styles/PizzaShop.module.css';
 
 export async function getStaticProps({ params }) {
+	const icon = icons;
 	return {
 		props: {
+			icon,
 			pizzaShop: pizzaShopsData.find(
 				(pizzaShop) => pizzaShop.id.toString() === params.id
 			),
@@ -28,7 +31,7 @@ export async function getStaticPaths() {
 	};
 }
 
-const PizzaShop = ({ pizzaShop }) => {
+const PizzaShop = ({ pizzaShop, icon }) => {
 	const router = useRouter();
 
 	if (router.isFallback) {
@@ -36,6 +39,7 @@ const PizzaShop = ({ pizzaShop }) => {
 	}
 
 	const { name, address, neighborhood, imgUrl, city, state } = pizzaShop;
+	const { cityState, map, restaurant, thumbUp } = icon;
 
 	return (
 		<div style={styles.layout}>
@@ -63,16 +67,60 @@ const PizzaShop = ({ pizzaShop }) => {
 					<div className={styles.col2}>
 						<h2 className={styles.name}>{name}</h2>
 						<p className={styles.pizzaPlaceInfo}>
-							<span>icon</span> {address}
+							<span>
+								{' '}
+								<Image
+									src={map}
+									width={24}
+									height={24}
+									objectFit="cover"
+									className={styles.iconImg}
+									alt={name}
+								/>
+							</span>{' '}
+							{address}
 						</p>
 						<p className={styles.pizzaPlaceInfo}>
-							<span>icon</span> {city}, {state}
+							<span>
+								{' '}
+								<Image
+									src={cityState}
+									width={24}
+									height={24}
+									objectFit="cover"
+									className={styles.iconImg}
+									alt={name}
+								/>
+							</span>{' '}
+							{city}, {state}
 						</p>
 						<p className={styles.pizzaPlaceInfo}>
-							<span>icon</span> {neighborhood}
+							<span>
+								{' '}
+								<Image
+									src={restaurant}
+									width={24}
+									height={24}
+									objectFit="cover"
+									className={styles.iconImg}
+									alt={name}
+								/>
+							</span>{' '}
+							{neighborhood}
 						</p>
 						<p className={styles.pizzaPlaceInfo}>
-							<span>icon</span> count
+							<span>
+								{' '}
+								<Image
+									src={thumbUp}
+									width={24}
+									height={24}
+									objectFit="cover"
+									className={styles.iconImg}
+									alt={name}
+								/>
+							</span>{' '}
+							count
 						</p>
 
 						<button className={styles.upvoteButton}>Up Vote!</button>
