@@ -2,15 +2,15 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { icons } from '../../public/Icons';
+import { icons } from '../../data/Icons';
 import pizzaShopsData from '../../data/pizza-shops.json';
 import styles from '../../styles/PizzaShop.module.css';
 
 export async function getStaticProps({ params }) {
-	const icon = icons;
+	// const icon = icons;
 	return {
 		props: {
-			icon,
+			icon: icons,
 			pizzaShop: pizzaShopsData.find(
 				(pizzaShop) => pizzaShop.id.toString() === params.id
 			),
