@@ -68,3 +68,9 @@
 		margin: 0 0.5rem;
 	}
 }
+
+@media (max-width: 425px) {
+	.title {
+		font-size: 1.15em;
+	}
+}

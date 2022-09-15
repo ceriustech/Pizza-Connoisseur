@@ -1,0 +1,25 @@
+.form {
+	display: flex;
+	flex-direction: column;
+}
+
+.label {
+	font-size: 1.25rem;
+	margin-bottom: 0.25em;
+}
+
+.selectField,
+.inputField {
+	color: #292f3d;
+	background: #fff;
+	padding: 0.875em;
+	border-radius: 8px;
+	width: clamp(50%, 20em, 100%);
+	border: 1px solid transparent;
+	outline: 1px solid transparent;
+	accent-color: #ff0808;
+}
+
+.selectField option {
+	font-size: 1rem;
+}

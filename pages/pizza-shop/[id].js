@@ -5,13 +5,10 @@ import Link from 'next/link';
 import { icons } from '../../data/Icons';
 import pizzaShopsData from '../../data/pizza-shops.json';
 import styles from '../../styles/PizzaShop.module.css';
-import cls from 'classnames';
 
 export async function getStaticProps({ params }) {
-	// const icon = icons;
 	return {
 		props: {
-			icon: icons,
 			pizzaShop: pizzaShopsData.find(
 				(pizzaShop) => pizzaShop.id.toString() === params.id
 			),
@@ -32,7 +29,7 @@ export async function getStaticPaths() {
 	};
 }
 
-const PizzaShop = ({ pizzaShop, icon }) => {
+const PizzaShop = ({ pizzaShop }) => {
 	const router = useRouter();
 
 	if (router.isFallback) {
@@ -40,7 +37,7 @@ const PizzaShop = ({ pizzaShop, icon }) => {
 	}
 
 	const { name, address, neighborhood, imgUrl, city, state } = pizzaShop;
-	const { cityState, map, restaurant, thumbUp } = icon;
+	const { cityState, map, restaurant, thumbUp } = icons;
 
 	return (
 		<div style={styles.layout}>

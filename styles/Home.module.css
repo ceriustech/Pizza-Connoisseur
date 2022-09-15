@@ -30,17 +30,25 @@
 
 .cardLayout {
 	display: grid;
-	grid-template-columns: repeat(1, minmax(0, 1fr));
-	column-gap: 1.5rem /* 24px */;
+	padding: 1rem 0;
+	grid-auto-rows: 375px;
+	/* grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); */
+	grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+	column-gap: 2.5rem /* 24px */;
 	row-gap: 1.5rem /* 24px */;
+	justify-items: center;
 }
 
 .card {
 	justify-content: center;
 }
 
+.restaurantSearch {
+	margin-top: 4rem;
+}
+
 .headingContainer {
-	margin: 5rem 0 2rem;
+	margin-bottom: 2rem;
 }
 
 .heading {
@@ -58,8 +66,16 @@
 	margin-top: 5rem;
 }
 
+.searchContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+	column-gap: 2.5rem /* 24px */;
+	row-gap: 1.5rem /* 24px */;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+
 .buttonWrapper {
-	margin: 0.25rem 0 8rem;
 }
 
 .button {
@@ -91,6 +107,32 @@
   2xl: min-width: 1536px;
 **/
 
+@media (max-width: 768px) {
+	.main {
+		margin-top: 4.5rem;
+	}
+	.heroContainer {
+	}
+}
+
+@media (max-width: 425px) {
+	.restaurantSearch {
+		display: grid;
+		justify-content: center;
+	}
+
+	.heading {
+		font-size: 1.75rem;
+	}
+}
+
+@media (max-width: 375px) {
+	.heroContainer {
+		background-size: 100%;
+		height: 300px;
+	}
+}
+
 @media (min-width: 640px) {
 	.container {
 		padding-left: 1rem /* 16px */;
@@ -98,16 +140,13 @@
 	}
 
 	.main {
-		margin-top: 3rem /* 48px */;
 		padding-left: 1.5rem /* 24px */;
 		padding-right: 1.5rem /* 24px */;
 	}
-	.cardLayout {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
+
 	.buttonWrapper {
 		display: flex;
-		margin-top: 0.5rem;
+		margin-top: 1.25rem;
 	}
 }
 
@@ -125,17 +164,10 @@
 		right: 20%;
 	}
 
-	.cardLayout {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
 	.button {
-		padding-top: 1rem /* 16px */;
-		padding-bottom: 1rem /* 16px */;
+		padding: 0.75rem 2rem;
 		font-size: 1.125rem /* 18px */;
 		line-height: 1.75rem /* 28px */;
-		padding-left: 2.5rem /* 40px */;
-		padding-right: 2.5rem /* 40px */;
 	}
 }
 
@@ -152,9 +184,6 @@
 	.heroImage {
 		right: 20%;
 	}
-	.cardLayout {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
 
 	.buttonWrapper {
 		justify-content: flex-start;
@@ -164,9 +193,5 @@
 @media (min-width: 1280px) {
 	.main {
 		margin-top: 7rem /* 112px */;
-	}
-
-	.cardLayout {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 }

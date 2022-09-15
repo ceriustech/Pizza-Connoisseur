@@ -1,8 +1,11 @@
 import Head from 'next/head';
 import Banner from '../components/Banner/Banner';
+import StateSearch from '../components/Search/StateSearch/StateSearch';
+import CitySearch from '../components/Search/CitySearch/CitySearch';
 import styles from '../styles/Home.module.css';
 import Card from '../components/Card/card';
 import pizzaShopsData from '../data/pizza-shops.json';
+import { icons } from '../data/Icons';
 
 export async function getStaticProps() {
 	return {
@@ -16,6 +19,8 @@ const Home = ({ pizzaShops }) => {
 	const bannerBtnClickHandler = () => {
 		console.log('BUTTON CLICKED');
 	};
+
+	const { thumbUp } = icons;
 
 	return (
 		<div className={styles.container}>
@@ -46,23 +51,26 @@ const Home = ({ pizzaShops }) => {
 					<Banner />
 				</section>
 
-				<section>
+				<section className={styles.restaurantSearch}>
+					<div className={styles.searchContainer}>
+						<div className={styles.buttonWrapper}>
+							<button className={styles.button} onClick={bannerBtnClickHandler}>
+								View restaurants nearby
+							</button>
+						</div>
+						<StateSearch />
+						<CitySearch />
+					</div>
+					<div className={styles.headingContainer}>
+						<h2 className={styles.heading}>
+							<span>Top</span> Rated Pizza Shops
+						</h2>
+					</div>
+				</section>
+
+				<section className="restarurantGrid">
 					{pizzaShopsData.length > 0 && (
 						<>
-							<div className={styles.headingContainer}>
-								<h2 className={styles.heading}>
-									<span>Top</span> Rated Pizza Shops
-								</h2>
-							</div>
-							<div className={styles.buttonWrapper}>
-								<button
-									className={styles.button}
-									onClick={bannerBtnClickHandler}
-								>
-									View restaurants nearby
-								</button>
-							</div>
-
 							<div className={styles.cardLayout}>
 								{pizzaShops.map((shop) => (
 									<Card
@@ -70,6 +78,7 @@ const Home = ({ pizzaShops }) => {
 										name={shop.name}
 										href={`/pizza-shop/${shop.id}`}
 										imgUrl={shop.imgUrl}
+										upVoteImgUrl={thumbUp}
 										city={shop.city}
 										state={shop.state}
 									/>

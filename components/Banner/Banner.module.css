@@ -34,6 +34,12 @@
 **/
 
 /** sm breakpoint **/
+@media (max-width: 375px) {
+	.subTitle,
+	.subTitle_h2 {
+		font-size: 2rem;
+	}
+}
 @media (min-width: 640px) {
 	.title {
 		font-size: 3rem /* 48px */;
