@@ -8,9 +8,24 @@ import pizzaShopsData from '../data/pizza-shops.json';
 import { icons } from '../data/Icons';
 
 export async function getStaticProps() {
+	const url =
+		'https://api.foursquare.com/v3/places/search?query=pizza-restaurants';
+
+	const options = {
+		method: 'GET',
+		headers: {
+			accept: 'application/json',
+			Authorization: 'fsq3A6gdNJgZqeSygwsUcNHVIlsCp9qtxNK6uNBnVn8zTtg=',
+		},
+	};
+
+	const response = await fetch(url, options);
+	const data = await response.json();
+	console.log(data.results);
+
 	return {
 		props: {
-			pizzaShops: pizzaShopsData,
+			pizzaShops: data.results,
 		}, // will be passed to the page component as props
 	};
 }
@@ -69,18 +84,18 @@ const Home = ({ pizzaShops }) => {
 				</section>
 
 				<section className="restarurantGrid">
-					{pizzaShopsData.length > 0 && (
+					{pizzaShops.length > 0 && (
 						<>
 							<div className={styles.cardLayout}>
 								{pizzaShops.map((shop) => (
 									<Card
-										key={shop.id}
+										key={shop.fsq_id}
 										name={shop.name}
-										href={`/pizza-shop/${shop.id}`}
-										imgUrl={shop.imgUrl}
+										href={`/pizza-shop/${shop.fsq_id}`}
+										imgUrl={pizzaShopsData[0].imgUrl || shop.link}
 										upVoteImgUrl={thumbUp}
-										city={shop.city}
-										state={shop.state}
+										city={shop.location.locality}
+										state={shop.location.region}
 									/>
 								))}
 							</div>
