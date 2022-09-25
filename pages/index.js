@@ -6,26 +6,14 @@ import styles from '../styles/Home.module.css';
 import Card from '../components/Card/card';
 import pizzaShopsData from '../data/pizza-shops.json';
 import { icons } from '../data/Icons';
+import { fetchPizzaRestaurants } from '../lib/pizza-picker';
 
 export async function getStaticProps() {
-	const url =
-		'https://api.foursquare.com/v3/places/search?query=pizza-restaurants';
-
-	const options = {
-		method: 'GET',
-		headers: {
-			accept: 'application/json',
-			Authorization: 'fsq3A6gdNJgZqeSygwsUcNHVIlsCp9qtxNK6uNBnVn8zTtg=',
-		},
-	};
-
-	const response = await fetch(url, options);
-	const data = await response.json();
-	console.log(data.results);
-
+	const pizzaRestaurants = (await fetchPizzaRestaurants()) ?? [];
+	console.log('pizzaRestaurants', pizzaRestaurants);
 	return {
 		props: {
-			pizzaShops: data.results,
+			pizzaShops: pizzaRestaurants,
 		}, // will be passed to the page component as props
 	};
 }
