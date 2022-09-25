@@ -3,23 +3,28 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { icons } from '../../data/Icons';
+import { fetchPizzaRestaurants } from '../../lib/pizza-picker';
 import pizzaShopsData from '../../data/pizza-shops.json';
 import styles from '../../styles/PizzaShop.module.css';
 
 export async function getStaticProps({ params }) {
+	const pizzaRestaurants = (await fetchPizzaRestaurants()) || [];
+
 	return {
 		props: {
-			pizzaShop: pizzaShopsData.find(
-				(pizzaShop) => pizzaShop.id.toString() === params.id
+			pizzaShop: pizzaRestaurants.find(
+				(pizzaShop) => pizzaShop.fsq_id.toString() === params.id
 			),
 		}, // will be passed to the page component as props
 	};
 }
 
 export async function getStaticPaths() {
-	const paths = pizzaShopsData.map((pizzaShop) => ({
+	const pizzaRestaurants = (await fetchPizzaRestaurants()) || [];
+
+	const paths = pizzaRestaurants.map((pizzaShop) => ({
 		params: {
-			id: pizzaShop.id.toString(),
+			id: pizzaShop.fsq_id.toString(),
 		},
 	}));
 
@@ -36,7 +41,8 @@ const PizzaShop = ({ pizzaShop }) => {
 		return <div>Loading...</div>;
 	}
 
-	const { name, address, neighborhood, imgUrl, city, state } = pizzaShop;
+	const { name, location } = pizzaShop;
+	const { address, neighborhood, imgUrl, locality, region } = location;
 	const { cityState, map, restaurant, thumbUp } = icons;
 
 	return (
@@ -53,7 +59,7 @@ const PizzaShop = ({ pizzaShop }) => {
 					<div className={styles.col1}>
 						<div className={styles.imageContainer}>
 							<Image
-								src={imgUrl}
+								src={pizzaShopsData[0].imgUrl || imgUrl}
 								width={600}
 								height={360}
 								objectFit="cover"
@@ -88,21 +94,24 @@ const PizzaShop = ({ pizzaShop }) => {
 									alt={name}
 								/>
 							</span>
-							{city}, {state}
+							{locality}, {region}
 						</p>
-						<p className={styles.pizzaPlaceInfo}>
-							<span className={styles.icon}>
-								<Image
-									src={restaurant}
-									width={24}
-									height={24}
-									objectFit="cover"
-									className={styles.iconImg}
-									alt={name}
-								/>
-							</span>
-							{neighborhood}
-						</p>
+						{neighborhood.length > 0 && (
+							<p className={styles.pizzaPlaceInfo}>
+								<span className={styles.icon}>
+									<Image
+										src={restaurant}
+										width={24}
+										height={24}
+										objectFit="cover"
+										className={styles.iconImg}
+										alt={name}
+									/>
+								</span>
+								{neighborhood[0]}
+							</p>
+						)}
+
 						<p className={styles.pizzaPlaceInfo}>
 							<span className={styles.icon}>
 								<Image

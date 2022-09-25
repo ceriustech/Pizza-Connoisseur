@@ -9,7 +9,7 @@ import { icons } from '../data/Icons';
 import { fetchPizzaRestaurants } from '../lib/pizza-picker';
 
 export async function getStaticProps() {
-	const pizzaRestaurants = (await fetchPizzaRestaurants()) ?? [];
+	const pizzaRestaurants = (await fetchPizzaRestaurants()) || [];
 	console.log('pizzaRestaurants', pizzaRestaurants);
 	return {
 		props: {
