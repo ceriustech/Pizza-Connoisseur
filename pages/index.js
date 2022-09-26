@@ -80,7 +80,7 @@ const Home = ({ pizzaShops }) => {
 										key={shop.fsq_id}
 										name={shop.name}
 										href={`/pizza-shop/${shop.fsq_id}`}
-										imgUrl={pizzaShopsData[0].imgUrl || shop.link}
+										imgUrl={shop?.imgUrl || pizzaShopsData[0].imgUrl}
 										upVoteImgUrl={thumbUp}
 										city={shop.location.locality}
 										state={shop.location.region}
