@@ -13,7 +13,7 @@ export async function getStaticProps({ params }) {
 	return {
 		props: {
 			pizzaShop: pizzaRestaurants.find(
-				(pizzaShop) => pizzaShop.fsq_id.toString() === params.id
+				(pizzaShop) => pizzaShop.id.toString() === params.id
 			),
 		}, // will be passed to the page component as props
 	};
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 
 	const paths = pizzaRestaurants.map((pizzaShop) => ({
 		params: {
-			id: pizzaShop.fsq_id.toString(),
+			id: pizzaShop.id.toString(),
 		},
 	}));
 
@@ -41,8 +41,7 @@ const PizzaShop = ({ pizzaShop }) => {
 		return <div>Loading...</div>;
 	}
 
-	const { name, location } = pizzaShop;
-	const { address, neighborhood, imgUrl, locality, region } = location;
+	const { name, address, city, state, neighborhood, imgUrl } = pizzaShop;
 	const { cityState, map, restaurant, thumbUp } = icons;
 
 	return (
@@ -59,7 +58,7 @@ const PizzaShop = ({ pizzaShop }) => {
 					<div className={styles.col1}>
 						<div className={styles.imageContainer}>
 							<Image
-								src={pizzaShopsData[0].imgUrl || imgUrl}
+								src={imgUrl}
 								width={600}
 								height={360}
 								objectFit="cover"
@@ -94,7 +93,7 @@ const PizzaShop = ({ pizzaShop }) => {
 									alt={name}
 								/>
 							</span>
-							{locality}, {region}
+							{city}, {state}
 						</p>
 						{neighborhood.length > 0 && (
 							<p className={styles.pizzaPlaceInfo}>
@@ -108,7 +107,7 @@ const PizzaShop = ({ pizzaShop }) => {
 										alt={name}
 									/>
 								</span>
-								{neighborhood[0]}
+								{neighborhood}
 							</p>
 						)}
 

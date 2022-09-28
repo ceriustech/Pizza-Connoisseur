@@ -77,13 +77,13 @@ const Home = ({ pizzaShops }) => {
 							<div className={styles.cardLayout}>
 								{pizzaShops.map((shop) => (
 									<Card
-										key={shop.fsq_id}
+										key={shop.id}
 										name={shop.name}
-										href={`/pizza-shop/${shop.fsq_id}`}
+										href={`/pizza-shop/${shop.id}`}
 										imgUrl={shop?.imgUrl || pizzaShopsData[0].imgUrl}
 										upVoteImgUrl={thumbUp}
-										city={shop.location.locality}
-										state={shop.location.region}
+										city={shop.city}
+										state={shop.state}
 									/>
 								))}
 							</div>
