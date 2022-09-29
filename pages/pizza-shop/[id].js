@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { icons } from '../../data/Icons';
 import { fetchPizzaRestaurants } from '../../lib/pizza-picker';
-import pizzaShopsData from '../../data/pizza-shops.json';
 import styles from '../../styles/PizzaShop.module.css';
 
 export async function getStaticProps({ params }) {
