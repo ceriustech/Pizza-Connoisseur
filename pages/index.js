@@ -20,7 +20,8 @@ export async function getStaticProps() {
 }
 
 const Home = ({ pizzaShops }) => {
-	const { trackLocationHandler, latLong, locationErrMsg } = useTrackLocation();
+	const { trackLocationHandler, latLong, locationErrMsg, isFindingLocation } =
+		useTrackLocation();
 
 	console.log('%cLOCATION DATA', 'font-size: 1.5em; color:red');
 	console.log({ latLong, locationErrMsg });
@@ -66,7 +67,7 @@ const Home = ({ pizzaShops }) => {
 					<div className={styles.searchContainer}>
 						<div className={styles.buttonWrapper}>
 							<button className={styles.button} onClick={bannerBtnClickHandler}>
-								View restaurants nearby
+								{isFindingLocation ? 'Locating...' : 'View restaurants nearby'}
 							</button>
 						</div>
 						<StateSearch />
@@ -77,6 +78,11 @@ const Home = ({ pizzaShops }) => {
 							<span>Top</span> Rated Pizza Shops
 						</h2>
 					</div>
+					{locationErrMsg && (
+						<div className={styles.errorMsgContainer}>
+							<p className={styles.errorMsgText}>{locationErrMsg}</p>
+						</div>
+					)}
 				</section>
 
 				<section className="restarurantGrid">

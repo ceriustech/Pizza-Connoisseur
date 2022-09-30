@@ -99,6 +99,15 @@
 	margin: -1px;
 }
 
+.errorMsgContainer {
+	text-align: center;
+}
+
+.errorMsgText {
+	color: #f44954;
+	font-size: 1.5rem;
+}
+
 /** Breakpoints:
   sm: min-width: 640px;
   md: min-width: 768px;
