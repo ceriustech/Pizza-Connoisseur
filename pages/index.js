@@ -7,6 +7,7 @@ import Card from '../components/Card/card';
 import pizzaShopsData from '../data/pizza-shops.json';
 import { icons } from '../data/Icons';
 import { fetchPizzaRestaurants } from '../lib/pizza-picker';
+import { useTrackLocation } from '../hooks/use-track-location';
 
 export async function getStaticProps() {
 	const pizzaRestaurants = (await fetchPizzaRestaurants()) || [];
@@ -19,8 +20,15 @@ export async function getStaticProps() {
 }
 
 const Home = ({ pizzaShops }) => {
+	const { trackLocationHandler, latLong, locationErrMsg } = useTrackLocation();
+
+	console.log('%cLOCATION DATA', 'font-size: 1.5em; color:red');
+	console.log({ latLong, locationErrMsg });
+	console.log(latLong);
+
 	const bannerBtnClickHandler = () => {
 		console.log('BUTTON CLICKED');
+		trackLocationHandler();
 	};
 
 	const { thumbUp } = icons;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useTrackLocation = () => {
+export const useTrackLocation = () => {
 	const [locationErrMsg, setLocationErrorMsg] = useState('');
 	const [latLong, setLatLong] = useState('');
 
@@ -31,5 +31,3 @@ const useTrackLocation = () => {
 		locationErrMsg,
 	};
 };
-
-export default useTrackLocation;
