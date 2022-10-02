@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Head from 'next/head';
 import Banner from '../components/Banner/Banner';
 import StateSearch from '../components/Search/StateSearch/StateSearch';
@@ -25,7 +26,26 @@ const Home = ({ pizzaShops }) => {
 
 	console.log('%cLOCATION DATA', 'font-size: 1.5em; color:red');
 	console.log({ latLong, locationErrMsg });
-	console.log(latLong);
+	console.log('PIZZA SHOPS', pizzaShops);
+
+	useEffect(() => {
+		async function getPizzaRestaurantsByLocation() {
+			if (latLong) {
+				try {
+					const fetchedPizzaRestaurants = await fetchPizzaRestaurants(
+						latLong,
+						15
+					);
+					console.log('%cFETCHED PIZZA SHOPS:', 'font-size:1.5em;color:yellow');
+					console.log(fetchedPizzaRestaurants);
+				} catch (error) {
+					console.log('UNABLE TO FETCH RESTAURANT DATA:', error);
+				}
+			}
+		}
+
+		getPizzaRestaurantsByLocation();
+	}, [latLong]);
 
 	const bannerBtnClickHandler = () => {
 		console.log('BUTTON CLICKED');
@@ -86,7 +106,7 @@ const Home = ({ pizzaShops }) => {
 				</section>
 
 				<section className="restarurantGrid">
-					{pizzaShops.length > 0 && (
+					{(pizzaShops.length > 0 && (
 						<>
 							<div className={styles.cardLayout}>
 								{pizzaShops.map((shop) => (
@@ -102,7 +122,7 @@ const Home = ({ pizzaShops }) => {
 								))}
 							</div>
 						</>
-					)}
+					)) || <div>Sorry, we can't find any pizza places at this time.</div>}
 				</section>
 			</main>
 		</div>
