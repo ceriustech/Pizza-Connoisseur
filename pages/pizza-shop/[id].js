@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import Button from '../../components/Button/Button';
 import { icons } from '../../data/Icons';
 import { fetchPizzaRestaurants } from '../../lib/pizza-picker';
 import styles from '../../styles/PizzaShop.module.css';
@@ -124,7 +125,7 @@ const PizzaShop = ({ pizzaShop }) => {
 							count
 						</p>
 
-						<button className={styles.upvoteButton}>Up Vote!</button>
+						<Button buttonText="Up Vote!" />
 					</div>
 				</section>
 			</main>

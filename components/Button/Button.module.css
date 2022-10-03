@@ -1,0 +1,44 @@
+.buttonWrapper {
+}
+
+.button {
+	background-color: var(--text-orange);
+	border-radius: 0.5rem;
+	cursor: pointer;
+	color: white;
+	border: transparent;
+
+	padding-top: 1rem /* 16px */;
+	padding-bottom: 1rem /* 16px */;
+	font-size: 1.125rem /* 18px */;
+	line-height: 1.75rem /* 28px */;
+	padding-left: 2.5rem /* 40px */;
+	padding-right: 2.5rem /* 40px */;
+}
+
+.button:hover {
+	background-color: #f44954;
+	border: 1px solid var(--text-orange);
+	margin: -1px;
+}
+
+@media (min-width: 640px) {
+	.buttonWrapper {
+		display: flex;
+		margin-top: 1.25rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.button {
+		padding: 0.75rem 2rem;
+		font-size: 1.125rem /* 18px */;
+		line-height: 1.75rem /* 28px */;
+	}
+}
+
+@media (min-width: 1024px) {
+	.buttonWrapper {
+		justify-content: flex-start;
+	}
+}

@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Banner from '../components/Banner/Banner';
 import StateSearch from '../components/Search/StateSearch/StateSearch';
 import CitySearch from '../components/Search/CitySearch/CitySearch';
+import Button from '../components/Button/Button';
 import styles from '../styles/Home.module.css';
 import Card from '../components/Card/card';
 import pizzaShopsData from '../data/pizza-shops.json';
@@ -106,13 +107,15 @@ const Home = ({ pizzaShops }) => {
 
 				<section className={styles.restaurantSearch}>
 					<div className={styles.searchContainer}>
-						<div className={styles.buttonWrapper}>
-							<button className={styles.button} onClick={bannerBtnClickHandler}>
-								{isFindingLocation ? 'Locating...' : 'View restaurants nearby'}
-							</button>
+						<Button
+							isLocation={isFindingLocation}
+							clickHandler={bannerBtnClickHandler}
+						/>
+						<div className={styles.searchFieldContainer}>
+							<StateSearch />
+							<CitySearch />
+							<Button buttonText="Submit" />
 						</div>
-						<StateSearch />
-						<CitySearch />
 					</div>
 					<div className={styles.headingContainer}>
 						{pizzaRestaurantsHeader}
