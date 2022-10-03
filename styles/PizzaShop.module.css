@@ -85,24 +85,6 @@
 		brightness(93%) contrast(78%);
 }
 
-.upvoteButton {
-	color: var(--text-white-100);
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-	padding: 0.75rem;
-	background-color: var(--text-orange);
-	cursor: pointer;
-	color: #fff;
-	outline: 0;
-	border: 0;
-	border-radius: 0.5rem;
-	font-size: 1rem;
-}
-
-.upvoteButton:hover {
-	background-color: #f44954;
-}
-
 @media (max-width: 768px) {
 	.pizzaPlaceInfoContainer {
 		gap: 2rem;

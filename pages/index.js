@@ -110,11 +110,12 @@ const Home = ({ pizzaShops }) => {
 						<Button
 							isLocation={isFindingLocation}
 							clickHandler={bannerBtnClickHandler}
+							size="medium"
 						/>
 						<div className={styles.searchFieldContainer}>
 							<StateSearch />
 							<CitySearch />
-							<Button buttonText="Submit" />
+							<Button buttonText="Submit" size="small" />
 						</div>
 					</div>
 					<div className={styles.headingContainer}>

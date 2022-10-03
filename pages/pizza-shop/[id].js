@@ -125,7 +125,7 @@ const PizzaShop = ({ pizzaShop }) => {
 							count
 						</p>
 
-						<Button buttonText="Up Vote!" />
+						<Button buttonText="Up Vote!" size="small" />
 					</div>
 				</section>
 			</main>
