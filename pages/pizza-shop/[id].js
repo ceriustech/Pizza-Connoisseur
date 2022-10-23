@@ -38,7 +38,7 @@ const PizzaShop = ({ pizzaShop }) => {
 	const router = useRouter();
 
 	if (router.isFallback) {
-		return <div>Loading...</div>;
+		return <div className={styles.loader}></div>;
 	}
 
 	const { name, address, city, state, neighborhood, imgUrl } = pizzaShop;
