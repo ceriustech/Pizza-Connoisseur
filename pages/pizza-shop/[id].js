@@ -9,12 +9,13 @@ import styles from '../../styles/PizzaShop.module.css';
 
 export async function getStaticProps({ params }) {
 	const pizzaRestaurants = (await fetchPizzaRestaurants()) || [];
+	const findPizzaShopById = pizzaRestaurants.find(
+		(pizzaShop) => pizzaShop.id.toString() === params.id
+	);
 
 	return {
 		props: {
-			pizzaShop: pizzaRestaurants.find(
-				(pizzaShop) => pizzaShop.id.toString() === params.id
-			),
+			pizzaShop: findPizzaShopById ? findPizzaShopById : {},
 		}, // will be passed to the page component as props
 	};
 }
@@ -39,6 +40,11 @@ const PizzaShop = ({ pizzaShop }) => {
 
 	if (router.isFallback) {
 		return <div className={styles.loader}></div>;
+	}
+
+	if (pizzaShop == undefined) {
+		console.log('TRUE', pizzaShop);
+		return <div>OOPS Can't find any pizza shops!</div>;
 	}
 
 	const { name, address, city, state, neighborhood, imgUrl } = pizzaShop;
