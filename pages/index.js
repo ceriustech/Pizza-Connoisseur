@@ -40,8 +40,6 @@ const Home = ({ pizzaShops }) => {
 						15
 					);
 					setPizzaPlaces(fetchedPizzaRestaurants);
-					console.log('%cFETCHED PIZZA SHOPS:', 'font-size:1.5em;color:yellow');
-					console.log(pizzaPlaces);
 				} catch (error) {
 					console.log('UNABLE TO FETCH RESTAURANT DATA:', error);
 				}
@@ -51,8 +49,10 @@ const Home = ({ pizzaShops }) => {
 		getPizzaRestaurantsByLocation();
 	}, [latLong]);
 
+	console.log('%cFETCHED PIZZA SHOPS:', 'font-size:1.5em;color:yellow');
+	console.log(pizzaPlaces);
+
 	const bannerBtnClickHandler = () => {
-		console.log('BUTTON CLICKED');
 		trackLocationHandler();
 	};
 
