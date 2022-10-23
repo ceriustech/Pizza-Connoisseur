@@ -26,6 +26,7 @@ const Home = ({ pizzaShops }) => {
 		useTrackLocation();
 
 	const [pizzaPlaces, setPizzaPlaces] = useState('');
+	const [pizzaPlacesError, setPizzaPlacesError] = useState(null);
 
 	console.log('%cLOCATION DATA', 'font-size: 1.5em; color:red');
 	console.log({ latLong, locationErrMsg });
@@ -37,11 +38,12 @@ const Home = ({ pizzaShops }) => {
 				try {
 					const fetchedPizzaRestaurants = await fetchPizzaRestaurants(
 						latLong,
-						15
+						30
 					);
 					setPizzaPlaces(fetchedPizzaRestaurants);
 				} catch (error) {
 					console.log('UNABLE TO FETCH RESTAURANT DATA:', error);
+					setPizzaPlacesError(error.message);
 				}
 			}
 		}
@@ -126,6 +128,11 @@ const Home = ({ pizzaShops }) => {
 							<p className={styles.errorMsgText}>{locationErrMsg}</p>
 						</div>
 					)}
+					{pizzaPlacesError && (
+						<div className={styles.errorMsgContainer}>
+							<p className={styles.errorMsgText}>{pizzaPlacesError}</p>
+						</div>
+					)}
 				</section>
 
 				<section className="restarurantGrid">
@@ -147,7 +154,7 @@ const Home = ({ pizzaShops }) => {
 						</>
 					)}
 
-					{(pizzaShops.length > 0 && (
+					{pizzaShops.length > 0 && pizzaPlaceCount <= 0 ? (
 						<>
 							<div className={styles.cardLayout}>
 								{pizzaShops.map((shop) => (
@@ -163,7 +170,9 @@ const Home = ({ pizzaShops }) => {
 								))}
 							</div>
 						</>
-					)) || <div>Sorry, we can't find any pizza places at this time.</div>}
+					) : (
+						''
+					)}
 				</section>
 			</main>
 		</div>
