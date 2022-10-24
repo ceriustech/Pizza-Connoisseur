@@ -13,10 +13,16 @@ export async function getStaticProps({ params }) {
 		(pizzaShop) => pizzaShop.id.toString() === params.id
 	);
 
+	if (findPizzaShopById) {
+		return {
+			props: {
+				pizzaShop: findPizzaShopById,
+			}, // will be passed to the page component as props
+		};
+	}
+
 	return {
-		props: {
-			pizzaShop: findPizzaShopById ? findPizzaShopById : {},
-		}, // will be passed to the page component as props
+		props: {},
 	};
 }
 
@@ -42,7 +48,7 @@ const PizzaShop = ({ pizzaShop }) => {
 		return <div className={styles.loader}></div>;
 	}
 
-	if (pizzaShop == undefined) {
+	if (pizzaShop === {}) {
 		console.log('TRUE', pizzaShop);
 		return <div>OOPS Can't find any pizza shops!</div>;
 	}
