@@ -8,10 +8,13 @@ import { fetchPizzaRestaurants } from '../../lib/pizza-picker';
 import styles from '../../styles/PizzaShop.module.css';
 
 export async function getStaticProps({ params }) {
-	const pizzaRestaurants = (await fetchPizzaRestaurants()) || [];
+	const { pizzaRestaurants = [] } = await fetchPizzaRestaurants();
+
 	const findPizzaShopById = pizzaRestaurants.find(
 		(pizzaShop) => pizzaShop.id.toString() === params.id
 	);
+
+	// console.log('FINDPIZZASHOP', findPizzaShopById);
 
 	if (findPizzaShopById) {
 		return {
@@ -22,12 +25,16 @@ export async function getStaticProps({ params }) {
 	}
 
 	return {
-		props: {},
+		props: {
+			pizzaShop: {},
+		},
 	};
 }
 
 export async function getStaticPaths() {
-	const pizzaRestaurants = (await fetchPizzaRestaurants()) || [];
+	// const pizzaRestaurants = (await fetchPizzaRestaurants()) || [];
+
+	const { pizzaRestaurants = [] } = await fetchPizzaRestaurants();
 
 	const paths = pizzaRestaurants.map((pizzaShop) => ({
 		params: {
@@ -44,13 +51,10 @@ export async function getStaticPaths() {
 const PizzaShop = ({ pizzaShop }) => {
 	const router = useRouter();
 
+	console.log('PIZZA SHOP', pizzaShop);
+
 	if (router.isFallback) {
 		return <div className={styles.loader}></div>;
-	}
-
-	if (pizzaShop === {}) {
-		console.log('TRUE', pizzaShop);
-		return <div>OOPS Can't find any pizza shops!</div>;
 	}
 
 	const { name, address, city, state, neighborhood, imgUrl } = pizzaShop;
