@@ -8,7 +8,7 @@ import { fetchPizzaRestaurants } from '../../lib/pizza-picker';
 import styles from '../../styles/PizzaShop.module.css';
 
 export async function getStaticProps({ params }) {
-	const { pizzaRestaurants = [] } = await fetchPizzaRestaurants();
+	const pizzaRestaurants = await fetchPizzaRestaurants();
 
 	const findPizzaShopById = pizzaRestaurants.find(
 		(pizzaShop) => pizzaShop.id.toString() === params.id
@@ -16,18 +16,10 @@ export async function getStaticProps({ params }) {
 
 	// console.log('FINDPIZZASHOP', findPizzaShopById);
 
-	if (findPizzaShopById) {
-		return {
-			props: {
-				pizzaShop: findPizzaShopById,
-			}, // will be passed to the page component as props
-		};
-	}
-
 	return {
 		props: {
-			pizzaShop: {},
-		},
+			pizzaShop: findPizzaShopById ? findPizzaShopById : {},
+		}, // will be passed to the page component as props
 	};
 }
 
@@ -51,7 +43,8 @@ export async function getStaticPaths() {
 const PizzaShop = ({ pizzaShop }) => {
 	const router = useRouter();
 
-	console.log('PIZZA SHOP', pizzaShop);
+	console.log('%cPIZZA SHOP:', 'font-size:1.5em;color:yellow');
+	console.log(pizzaShop);
 
 	if (router.isFallback) {
 		return <div className={styles.loader}></div>;

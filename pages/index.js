@@ -51,8 +51,8 @@ const Home = ({ pizzaShops }) => {
 		getPizzaRestaurantsByLocation();
 	}, [latLong]);
 
-	console.log('%cFETCHED PIZZA SHOPS:', 'font-size:1.5em;color:yellow');
-	console.log(pizzaPlaces);
+	// console.log('%cFETCHED PIZZA SHOPS:', 'font-size:1.5em;color:yellow');
+	// console.log(pizzaPlaces);
 
 	const bannerBtnClickHandler = () => {
 		trackLocationHandler();
