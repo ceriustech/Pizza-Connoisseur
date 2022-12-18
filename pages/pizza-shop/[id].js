@@ -7,26 +7,97 @@ import { icons } from '../../data/Icons';
 import { fetchPizzaRestaurants } from '../../lib/pizza-picker';
 import styles from '../../styles/PizzaShop.module.css';
 
-export async function getStaticProps({ params }) {
-	const pizzaRestaurants = await fetchPizzaRestaurants();
+export async function getStaticProps(staticProps) {
+	const { params } = staticProps;
+
+	console.log('IN GETSTATIC PROPS - PARAMS', params);
+
+	let pizzaRestaurants;
+	try {
+		pizzaRestaurants = await fetchPizzaRestaurants();
+	} catch (err) {
+		console.log('ERROR', err);
+	}
+
+	console.log('IN GETSTATIC PROPS - PIZZA RESTAURANT', pizzaRestaurants);
 
 	const findPizzaShopById = pizzaRestaurants.find(
 		(pizzaShop) => pizzaShop.id.toString() === params.id
 	);
 
-	// console.log('FINDPIZZASHOP', findPizzaShopById);
+	console.log('IN GETSTATIC PROPS - FINDPIZZASHOP', findPizzaShopById);
+
+	if (findPizzaShopById) {
+		console.log('THIS DATA IS AVAILABLE');
+	} else {
+		console.log('THIS DATA IS NOT AVAILABLE');
+	}
+
+	if (findPizzaShopById) {
+		return {
+			props: {
+				pizzaShop: findPizzaShopById,
+			}, // will be passed to the page component as props
+		};
+	}
 
 	return {
 		props: {
-			pizzaShop: findPizzaShopById ? findPizzaShopById : {},
-		}, // will be passed to the page component as props
+			pizzaShop: {},
+		},
 	};
 }
 
-export async function getStaticPaths() {
-	// const pizzaRestaurants = (await fetchPizzaRestaurants()) || [];
+// export async function getServerSideProps(context) {
+// 	// console.log('CONTEXT', context);
 
-	const { pizzaRestaurants = [] } = await fetchPizzaRestaurants();
+// 	const options = {
+// 		method: 'GET',
+// 		headers: {
+// 			accept: 'application/json',
+// 			Authorization: 'fsq3A6gdNJgZqeSygwsUcNHVIlsCp9qtxNK6uNBnVn8zTtg=',
+// 		},
+// 	};
+
+// 	let fetchPizzaRestaurant;
+// 	try {
+// 		fetchPizzaRestaurant = await (
+// 			await fetch(
+// 				`https://api.foursquare.com/v3/places/${context.params.id}`,
+// 				options
+// 			)
+// 		).json();
+// 	} catch (err) {
+// 		console.error('THERE WAS AN ERROR', err);
+// 	}
+
+// 	if (fetchPizzaRestaurant) {
+// 		return {
+// 			props: {
+// 				pizzaShop: {
+// 					name: fetchPizzaRestaurant.name,
+// 					address: fetchPizzaRestaurant.location.address,
+// 					city: fetchPizzaRestaurant.location.city,
+// 					state: fetchPizzaRestaurant.location.state,
+// 					neighborhood: fetchPizzaRestaurant.location.neighborhood,
+// 					imgUr:
+// 						'https://images.unsplash.com/photo-1560433679-ac26da4b954d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+// 				},
+// 			},
+// 		};
+// 	}
+
+// 	console.log(fetchPizzaRestaurant);
+
+// 	return {
+// 		props: {
+// 			pizzaShop: fetchPizzaRestaurant,
+// 		},
+// 	};
+// }
+
+export async function getStaticPaths() {
+	const pizzaRestaurants = (await fetchPizzaRestaurants()) || [];
 
 	const paths = pizzaRestaurants.map((pizzaShop) => ({
 		params: {
@@ -43,7 +114,7 @@ export async function getStaticPaths() {
 const PizzaShop = ({ pizzaShop }) => {
 	const router = useRouter();
 
-	console.log('%cPIZZA SHOP:', 'font-size:1.5em;color:yellow');
+	console.log('%cCOMPONENT PROP - PIZZA SHOP:', 'font-size:2em;color:yellow');
 	console.log(pizzaShop);
 
 	if (router.isFallback) {
