@@ -25,13 +25,7 @@ export async function getStaticProps(staticProps) {
 		(pizzaShop) => pizzaShop.id.toString() === params.id
 	);
 
-	console.log('IN GETSTATIC PROPS - FINDPIZZASHOP', findPizzaShopById);
-
-	if (findPizzaShopById) {
-		console.log('THIS DATA IS AVAILABLE');
-	} else {
-		console.log('THIS DATA IS NOT AVAILABLE');
-	}
+	console.log('IN GETSTATIC PROPS - FINDPIZZASHOP BY ID', findPizzaShopById);
 
 	if (findPizzaShopById) {
 		return {
@@ -48,6 +42,7 @@ export async function getStaticProps(staticProps) {
 	};
 }
 
+// Will use server side props at a later date
 // export async function getServerSideProps(context) {
 // 	// console.log('CONTEXT', context);
 
@@ -121,7 +116,14 @@ const PizzaShop = ({ pizzaShop }) => {
 		return <div className={styles.loader}></div>;
 	}
 
-	const { name, address, city, state, neighborhood, imgUrl } = pizzaShop;
+	const {
+		name = '',
+		address = '',
+		city = '',
+		state = '',
+		neighborhood = '',
+		imgUrl = 'https://via.placeholder.com/150',
+	} = pizzaShop;
 	const { cityState, map, restaurant, thumbUp } = icons;
 
 	return (
